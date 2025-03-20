@@ -8,7 +8,6 @@ palavra_sorteada = random.choice(palavras)
 
 #Criamos uma string com traços que representam as letras
 palavra_escondida = '-' * len(palavra_sorteada)
-palavra_escondida
 
 #criamos uma lista vazia para armazenar as letras que já foram faladas
 letras_adivinhadas = []
@@ -31,13 +30,16 @@ while True:
 
 #verificar se a letra digita está na palavra sorteada
     if letra in palavra_sorteada:
-        lista = []
-        for indice in range(len(palavra_sorteada)):
-            if letra == palavra_sorteada[indice]:
-                lista.append(letra)
-            else:
-                lista.append(palavra_escondida[indice]) 
-        palavra_escondida = ''.join(lista) # se jogador digitou a letra a então teremos = a**a  
+       #Se a letra está na palavra, atualize a string com traços
+       # para mostrar a letra adivinhada
+       palavra_escondida = ''.join(letra if letra == palavra_sorteada[indice] else palavra_escondida[indice] for indice in range (len(palavra_sorteada)))
+        #lista = []
+        #for indice in range(len(palavra_sorteada)):
+            #if letra == palavra_sorteada[indice]:
+                #lista.append(letra)
+           # else:
+                #lista.append(palavra_escondida[indice]) 
+        #palavra_escondida = ''.join(lista) # se jogador digitou a letra a então teremos = a**a  
 
 #letra não esta na palavra sorteada
     else:
