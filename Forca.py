@@ -18,41 +18,40 @@ max_tentativas = 6
 while True:
     #mostra na tela a palavra escondida
     print(palavra_escondida) 
-
-#pedimos ao jogador para digitar uma letra
-letra = input('Digite uma letra: ')
-
+    #pedimos ao jogador para digitar uma letra
+    letra = input('Digite uma letra: ')
 
 #verificamos se a letra ja foi digitada
-if letra in letras_adivinhadas:
-    print('Você já digitou essa letra. Tente outra por favor')
-    continue
+    if letra in letras_adivinhadas:
+     print('Você já digitou essa letra. Tente outra por favor')
+     continue
 
 #adicionar a letra a lista de letras digitadas
-letras_adivinhadas.append(letra)
+    letras_adivinhadas.append(letra)
 
 #verificar se a letra digita está na palavra sorteada
-if letra in palavra_sorteada:
-    lista = []
-    for indice in range(len(palavra_sorteada)):
-      if letra == palavra_sorteada[indice]:
-         lista.append(letra)
-      else:
-         lista.append(palavra_escondida[indice]) 
-    palavra_escondida = ''.join(lista) # se jogador digitou a letra a então teremos = a**a  
+    if letra in palavra_sorteada:
+        lista = []
+        for indice in range(len(palavra_sorteada)):
+            if letra == palavra_sorteada[indice]:
+                lista.append(letra)
+            else:
+                lista.append(palavra_escondida[indice]) 
+        palavra_escondida = ''.join(lista) # se jogador digitou a letra a então teremos = a**a  
 
 #letra não esta na palavra sorteada
-else:
-   max_tentativas -= 1
-   print(f'Letra não encontrada. Você tem mais{max_tentativas} tentativas')
+    else:
+        max_tentativas -= 1
+        print(f'Letra não encontrada. Você tem mais {max_tentativas} tentativas')
 
 #Verificamos se o jogador ganhou ou perdeu
-if palavra_escondida == palavra_sorteada:
-   print('Parabéns, Você ganhou!!')  
-   break
-elif max_tentativas == 0:
-   print('Você perdeu. A palavra era {palavra_sorteada}.')
-   break
+    if palavra_escondida == palavra_sorteada:
+        print('Parabéns, Você ganhou!!')
+        break
+
+    elif max_tentativas == 0:
+        print(f'Você perdeu. A palavra era {palavra_sorteada}.')
+        break
 
 
 
